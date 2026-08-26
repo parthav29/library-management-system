@@ -3,6 +3,7 @@ package org.springboot.librarymanagement.controller;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.RequiredArgsConstructor;
 import org.springboot.librarymanagement.entity.Book;
 import org.springboot.librarymanagement.entity.ResponseStructure;
 import org.springboot.librarymanagement.service.BookService;
@@ -11,10 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 public class BookController {
 
-	@Autowired
-	private BookService bookService;
+	private final BookService bookService;
 
 	// Add Book
 	@PostMapping(value = "/saveBooks")

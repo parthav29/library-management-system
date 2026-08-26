@@ -3,6 +3,7 @@ package org.springboot.librarymanagement.service;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.RequiredArgsConstructor;
 import org.springboot.librarymanagement.dao.BookDao;
 import org.springboot.librarymanagement.entity.Book;
 import org.springboot.librarymanagement.entity.ResponseStructure;
@@ -13,9 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class BookService {
-	@Autowired
-	private BookDao bookDao;
+
+	private final BookDao bookDao;
 
 //	Add Book
 	public ResponseEntity<ResponseStructure<Book>> addBook(Book book) {

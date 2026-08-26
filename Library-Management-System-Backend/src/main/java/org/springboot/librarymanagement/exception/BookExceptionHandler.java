@@ -18,4 +18,13 @@ public class BookExceptionHandler {
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 
 	}
+
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ResponseStructure<String>> handleException(Exception exception) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage(exception.getMessage());
+		structure.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		structure.setData("Internal Server Error");
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }
